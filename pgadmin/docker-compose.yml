@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  pgadmin:
+    container_name: generic_pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - '5050:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - webnet
+    logging:
+      driver: none
+volumes:
+  pgadmin-data: {}
+networks:
+  webnet:
