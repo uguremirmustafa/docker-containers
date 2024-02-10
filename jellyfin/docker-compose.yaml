@@ -3,11 +3,12 @@ services:
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
-    user: 115:122
     network_mode: 'host'
     volumes:
-      - /home/anomy/containers/jellyfin/config:/config
-      - /home/anomy/containers/jellyfin/cache:/cache
+      - /home/anomy/.jellyfin/cache:/cache
+      - /home/anomy/.jellyfin/config:/config
+      - /mnt/sda:/media
+      - /data/media:/torrent
     restart: 'unless-stopped'
     extra_hosts:
       - "host.docker.internal:host-gateway"

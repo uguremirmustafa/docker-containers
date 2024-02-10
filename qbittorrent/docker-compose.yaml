@@ -9,8 +9,10 @@ services:
       - TZ=Etc/UTC
       - WEBUI_PORT=8080
     volumes:
-      - /mnt/torrent/config/:/config
-      - /mnt/torrent/content/:/downloads
+      - /home/anomy/qbittorrent/config/:/config
+      - /home/anomy/qbittorrent/content/:/downloads
     ports:
       - 8080:8080
-    restart: always
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
